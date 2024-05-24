@@ -258,20 +258,14 @@ Lastly, we take the returned answer from the language model from the current 3 r
 
 ## Change log
 
-12/22/2023: Added folder to show pydepta output from UIUC, MIT and CMU faculty webpages. Updated V2 prompt to v2.2 to improve the LLM's ability to get research interests that are not null and to better be able to disguish a professor's name from its position; added another example for the llm to use in the chain of thought prompt. Ran extraction with the new prompt for UIUC, MIT, and CMU faculty webpages.
+
 
 
 
 ## References 
 include links related to datasets and papers describing any of the methodologies models you used. E.g. 
-
-* Pydepta fork: https://github.com/ZhijiaCHEN/pydepta/tree/master (Thank you to Zhijia Chen for explaining his modifications and code to pydepta)
-* For Running Local LLMs: https://github.com/bigscience-workshop/petals
-* Emotional Prompts: https://arxiv.org/pdf/2307.11760
-* LLMs Don't say what they think: https://arxiv.org/pdf/2305.04388
-* Depta Paper: https://dl.acm.org/doi/10.1145/1060745.1060761
+* WebVoyager: https://arxiv.org/pdf/2401.13919
+* The Future of Web Data Mining: https://aclanthology.org/2024.case-1.1.pdf
+* Mind2Web: https://arxiv.org/pdf/2306.06070
+* SeeAct: https://osu-nlp-group.github.io/SeeAct/
 * Openai for gpt: https://openai.com/
-
-Used in exploration and research but not in main solution:
-* Natbot.py: https://github.com/nat/natbot/blob/main/natbot.py
-* Langchain: https://www.langchain.com/
