@@ -1,4 +1,4 @@
-# jason-zalewski-mlm-web-extraction
+# jason-zalewski-multimodal-web-extraction
 
 ## Overview
 
