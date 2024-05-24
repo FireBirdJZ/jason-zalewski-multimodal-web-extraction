@@ -234,13 +234,7 @@ This section focuses on asynchronous processing of text analysis using large lan
 
 ## Algorithmic Design 
 
-First, We take the input of a faculty webpage url or it's HTML and run it through pydepta to generate regions that classifies similar structure subtrees in the HTML.
 
-Next, we classify these regions with a large language model asking if a region contains Professor names. If the region does contain Professor names we go to the next step in the algorithm, otherwise we skip this region and go onto the next one to classify.
-
-After, We check 3 records at a time inside a region. a record is a list which usually consists of single Professor with information related to the Professor that pydepta classifies in it's subtree such as the Professor's email and Position depending on the webpage. We put these 3 records inside a large language model's and asking the model to output in JSON format the Professor's name, position and research interests. If it doesn't find this information it should fill it with null.(Exact prompts used are in comparing_models.py).
-
-Lastly, we take the returned answer from the language model from the current 3 records and insert it inside a file to store. Then repeat the same steps onto the next 3 records inside that Region.
 
 ![design architecture](https://github.com/FireBirdJZ/forward_data-llm_ie/blob/main/diagram.png)
 
