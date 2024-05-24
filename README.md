@@ -234,6 +234,15 @@ This section focuses on asynchronous processing of text analysis using large lan
 
 ## Algorithmic Design 
 
+1. Viewport and accesibility tree extraction algorithm
+First the program goes to the url and renders the webpage with selenium. Next, it takes a screenshot and creates an assesibility tree which is similar to the HTML of whatever is currently in the viewport so it can be feed to an MultiModal Model. One thing to note is the assebility tree sometimes has slightly more infomration inside it than the image, so the model might extract information seen in the assebility tree but not the image. The accesibility tree was taken from the webvoyager's utility file. After we scroll down an even distance and repeat the process of getting a screenshot and getting the assebility tree until we reach the bottom of the webpage. This algorithm uses multiprocessing so we can do this for multiple webpages at once. Lastly, we go though all of these viewports and send the accesibility tree and image to the GPT4 api to extract a task based on the prompt. The extraction output from the model is then saved inside the same viewport directory it was extracted.
+
+ 2. Comparing different sized images from the Viewport and accesibility tree extraction algorithm
+ This program works similary as the Viewport and accesibility tree extraction algorithm but it has the ability to take different sized images when taking a screenshot of each viewport so you can compare the results of which sized image works best for a given extraction.
+
+3. Manuel extraction versus llm extraction results
+This program was an attempt to come up with a automated way to grade the LLMs results on different amount of imformation the Multimodal model had to extract on a image. Intead of taking screenshots and scrolling down the viewport, I first manuelly removed all the information I didn't want to be an a given image for the screenshot by deleting it off the html. The 3 webpages I did this for were all for different faculty pages. Next, I found where the faculty information was located in the html, and I would go in order of picking a speceficed amount of Professors I wanted to currently look at on the page, say 3, then delete all of the other ones on HTML and take a screenshot of the whole page. I would then redo this step until I had pictures of all the professors with the given amount in each screenshot. This program allows you to pick how many professors you want to look at in each image so that you can comapre results of extracting of say 6 professors at once or 21 professors at once.
+I want to mention some of the problems that this program has so that if you try to use it for extraction, I recommend not trusting the results of the llm extraction part, as some my results had problems with utf encodings and comparing the exact strings of text from the maunel extraction to the MLM extractions version, which would mark the answer wrong.   
 
 
 ![design architecture](https://github.com/FireBirdJZ/forward_data-llm_ie/blob/main/diagram.png)
@@ -242,12 +251,11 @@ This section focuses on asynchronous processing of text analysis using large lan
 
 ## Issues and Future Work
 
-* Localllm Beluga doesn't work with the same exact program in comparing_models.py that was built for gpt3.5turbo.
-* In comparing_models.py the large language model will not always output correct JSON output which will cause the program to skip inserting into the file to prevent the program from crashing. In the future I will most likely switch this file from a .json to a .txt file when inserting, or come up with a way to parse the llm's answer and manually build the Json as the large language model is inconsistent of building the correct JSON object even if it's answer could be correct of extraction the correct information.
-* For very long webpages it's possible that pydepta can crash.
-* Pydepta pip package does not currently work as the project seems to be abandoned as well as it's dependencies. So I modified the files to run inside of pydepta and used only what I needed for my research.
-* Petals can sometimes take long period of times or not find connections to run the local llm, such as in the presentation I cut the video short of it finishing its output.
-* Beluga generates the prompt into its answer.
+* In the Manuel extraction versus llm extraction results program, the grading of the MLM versus has manuel extracting has issues of utf encoding errors and trying to come up with ways to match some of the strings in an exact manner, which would cause the answer to be marked wrong. Also, the accruacy of the caltech page displays a 0.78 accuracy for each batch of images its currently at, which is not correct. The UC webpage out of the three should be the most accuracte even with some utf encoding errors if you feel you need to look at something quantitatively. The caltech page extraction should not be looked at quantitatively At least from the accuracy shown in the results of my extraction.
+* The assesibility in the Viewport and accesibility tree extraction algorithm might have encoding errors when saving it to the file. The accuracy of the model's extraction seems to be not majorly effected by this, but should still be mentioned.
+* The accesibility tree algorithm seems to get exponetially slower the more complex and longer a webpage is.
+
+
 
 
 ## Change log
