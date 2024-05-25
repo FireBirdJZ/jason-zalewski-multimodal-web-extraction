@@ -13,108 +13,25 @@ The Rest of the folders and files were used in exploration and research such as 
 A Break Down of the structure of the repo's file structure:
 ```
 .
-├── diagram.png
-├── LICENSE
+├── IE_Faculty_dataset.csv
 ├── README.md
+├── config.json
+├── manuel_versus_multimodal
+│   ├── caltech_dir
+│   │   ├── build_caltech.py
+│   │   └── llm_extract_and_compare_accuracy.py
+│   ├── texas_dir
+│   │   ├── build_texas.py
+│   │   └── llm_extract_and_compare_accuracy.py
+│   └── uc_dir
+│       ├── build_validate_case_and_extract.py
+│       ├── llm_extract_and_compare_accuracy.py
+│       └── table.txt
 ├── requirements.txt
-└── src
-    ├── experiments
-    │   ├── generated_code_directory
-    │   │   ├── generated_code.py
-    │   │   └── output.txt
-    │   ├── langchain_testing.ipynb
-    │   ├── natbot_extract_text_json
-    │   ├── natbot_generated_program_directory
-    │   │   ├── natbot_generated_output.txt
-    │   │   └── natbot_generated_program.py
-    │   ├── natbot_prompt_program.py
-    │   ├── natbot_testing.py
-    │   ├── sematic_regular_expressions_testing.py
-    │   └── testing_markuplm.py
-    ├── extracted_info.json
-    ├── main.py
-    ├── segmentation
-    │   └── pydepta
-    │       ├── LICENSE
-    │       ├── Makefile.buildbot
-    │       ├── pydepta
-    │       │   ├── comparing_models
-    │       │   │   ├── gpt3.5turbo_illini.json
-    │       │   │   └── gpt3.5turbo_mit.json
-    │       │   ├── comparing_models.py
-    │       │   ├── cot_comparing_models
-    │       │   │   ├── gpt3.5turbo_illini2.json
-    │       │   │   └── gpt3.5turbo_illini.json
-    │       │   ├── depta.py
-    │       │   ├── extract_prof_names.py
-    │       │   ├── htmls.py
-    │       │   ├── illini1_professors.json
-    │       │   ├── illini2_professors.json
-    │       │   ├── illlini3_professors.json
-    │       │   ├── __init__.py
-    │       │   ├── llm_benchmark_suite
-    │       │   │   ├── benchmark_output.txt
-    │       │   │   ├── benchmark_prompts_file.txt
-    │       │   │   └── text_analysis
-    │       │   │       ├── output_analysis.txt
-    │       │   │       ├── prompt_analysis.txt
-    │       │   │       ├── video_output_demo.txt
-    │       │   │       └── video_prompt_demo.txt
-    │       │   ├── LLMBenchmarkSuite.py
-    │       │   ├── mdr.py
-    │       │   ├── output_depta
-    │       │   │   ├── cmu_depta_output.txt
-    │       │   │   ├── illini_depta_output.txt
-    │       │   │   └── mit_depta_output.txt
-    │       │   ├── __pycache__
-    │       │   │   ├── comparing_models.cpython-311.pyc
-    │       │   │   ├── extract_prof_names.cpython-311.pyc
-    │       │   │   ├── htmls.cpython-311.pyc
-    │       │   │   ├── mdr.cpython-311.pyc
-    │       │   │   ├── trees.cpython-311.pyc
-    │       │   │   └── trees_cython.cpython-311.pyc
-    │       │   ├── saved_faculty_html_files
-    │       │   │   ├── csd.cmu.edu.html
-    │       │   │   ├── cs.illinois.edu.html
-    │       │   │   └── www.eecs.mit.edu.html
-    │       │   ├── tests
-    │       │   │   ├── __init__.py
-    │       │   │   ├── resources
-    │       │   │   │   ├── 1.html
-    │       │   │   │   ├── 1.txt
-    │       │   │   │   ├── 2.html
-    │       │   │   │   ├── 2.txt
-    │       │   │   │   ├── 3.html
-    │       │   │   │   ├── 3.txt
-    │       │   │   │   ├── 4.html
-    │       │   │   │   ├── 4.txt
-    │       │   │   │   ├── 5.html
-    │       │   │   │   ├── 5.txt
-    │       │   │   │   ├── 6.html
-    │       │   │   │   └── 7.html
-    │       │   │   └── test_depta.py
-    │       │   ├── trees_cython.c
-    │       │   ├── trees_cython.py
-    │       │   ├── trees_cython.pyx
-    │       │   ├── trees.py
-    │       │   └── video_test_comparing_models
-    │       │       ├── gpt3.5turbo_illini.txt
-    │       │       ├── v2.2_gpt3.5turbo_cmu_full.txt
-    │       │       ├── v2.2_gpt3.5turbo_illini_full.txt
-    │       │       ├── v2.2_gpt3.5turbo_mit_full.txt
-    │       │       ├── v2_gpt3.5turbo_illini_full.txt
-    │       │       ├── v2_gpt3.5turbo_illini.txt
-    │       │       ├── v2_gpt3.5turbo_mit_full2.txt
-    │       │       └── v2_gpt3.5turbo_mit_full.txt
-    │       ├── README.rst
-    │       ├── requirements.txt
-    │       ├── runtests.sh
-    │       ├── setup.py
-    │       ├── snapshot1.png
-    │       └── test.py
-    ├── shopify_extracted_info.json
-    ├── vector_db.py
-    └── web_extractor.py
+├── split_webpage.py
+├── utils.py
+├── utils_webarena.py
+└── video_example_running_scripts.txt
 ```
 
 
