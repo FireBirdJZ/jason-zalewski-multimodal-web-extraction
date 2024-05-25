@@ -29,9 +29,11 @@ A Break Down of the structure of the repo's file structure:
 │       └── table.txt
 ├── requirements.txt
 ├── split_webpage.py
+├── test_diff_sized_images.py
 ├── utils.py
 ├── utils_webarena.py
 └── video_example_running_scripts.txt
+
 ```
 
 
@@ -65,44 +67,6 @@ Some of the important files/components of the repo:
 
 
 ## Functional Design (Usage)
-
-### FacultyDataHarvester Class
-
-**Overview**
-The `FacultyDataHarvester` class located which can be run from depta.py is designed to facilitate the extraction and processing of faculty-related data from web pages. It provides methods to fetch HTML content, extract text, and identify faculty names and related information.
-
-**Methods**
-
-* `fetch_html_from_url(url: str) -> str`  
-  _Fetches HTML content from the specified URL._
-  - **Input**: A string representing the URL of the web page.
-  - **Output**: A string containing the raw HTML content of the page.
-
-* `save_html_to_file(url: str, folder_path: str = 'saved_faculty_html_files')`  
-  _Saves the fetched HTML content to a file._
-  - **Input**:
-    - `url`: URL of the web page.
-    - `folder_path`: Optional. The directory path where the HTML file will be saved.
-  - **Output**: None. The HTML content is saved to a file in the specified directory.
-
-* `load_html_from_file(url: str) -> str`  
-  _Loads HTML content from a saved file._
-  - **Input**: A string representing the URL of the web page. The URL is used to determine the filename.
-  - **Output**: A string containing the HTML content loaded from the file.
-
-* `extract_text() -> str`  
-  _Extracts and returns the textual content from the loaded HTML._
-  - **Input**: None. Operates on the internal `raw_html` attribute.
-  - **Output**: A string containing the extracted textual content.
-
-* `find_names_in_region(region: List[List[Any]], folder_path: str, file_name: str, write_mode: str = 'txt')`  
-  _Processes the provided region to identify and classify faculty names and related information, and saves the output in the specified format._
-  - **Input**:
-    - `region`: A list of lists containing the data to be processed.
-    - `folder_path`: The directory path where the output file will be saved.
-    - `file_name`: The name of the output file.
-    - `write_mode`: Optional. Specifies the output format ('json' or 'txt').
-  - **Output**: None. The processed data is saved to a file in the specified format.
 
 **Usage Examples**
 
