@@ -2,13 +2,32 @@
 
 ## Overview
 
-This module can be split into two main parts:
-    
-1. The first module extracts all of the professors names, positions and research interests from a faculty cs webpage by Classifying similar html subtrees into regions containing records for each professor with pydepta; then extracting the professor's information inside a records with a large language model. 
+This module contains several scripts for extracting and analyzing information from webpages:
 
-2. The second module compares two large language models(gpt3.5turbo and Beluga which is a finetuned Llama2) by running a set of web information extraction prompts to test the capability of each model with direct comparison of each other.
+1. `build_texas.py`, `build_caltech.py`, `build_uc.py`:
+  These scripts are used to build datasets for different universities (Texas, Caltech, UC). They navigate to specific faculty pages, remove unwanted elements, and extract faculty information in batches. The extracted information is saved in JSON format, and screenshots of the modified webpage are taken for each batch.
 
-The Rest of the folders and files were used in exploration and research such as the experiments folder which tests things out dealing with langchain, natbot, and vector databases.
+2. `llm_extract_and_compare_accuracy.py` (located in `manuel_versus_multimodal/caltech_dir`, `manuel_versus_multimodal/texas_dir`, and `manuel_versus_multimodal/uc_dir`):
+  This script works in conjunction with the dataset building scripts. It extracts information from the captured screenshots using the GPT-4 API. It iterates over each webpage directory, loads the screenshots and prompts, and sends them to the GPT-4 API for analysis. The extracted information is then compared with manually extracted information to calculate the accuracy for each field. The script saves the comparison results, average accuracy, and mismatch notes in separate files within each webpage directory.
+
+3. `split_webpage.py`:
+  This script captures webpage screenshots and saves them in a specified directory. It takes URLs or a CSV file containing URLs as input. The script navigates to each URL, captures screenshots of the entire page by scrolling and taking screenshots of each viewport. It also saves the full HTML and text of the webpage. The captured data is organized into separate directories for each webpage and viewport.
+
+4. `test_diff_sized_images.py`:
+  This script captures webpage screenshots in different sizes and saves them in a specified directory. It takes URLs or a CSV file containing URLs as input. The script sets up different image sizes, navigates to each URL, captures screenshots of the page in each size, and saves the screenshots in separate directories for each webpage, size, and viewport. It also saves the full HTML of the webpage and a metadata file containing information about the total height, viewport count, and size of each webpage.
+
+These scripts can be used independently or in combination to extract and analyze webpage data, capture screenshots, and compare the performance of language models in extracting information from the captured data.
+
+The repository also includes other directories and files:
+
+- `manuel_versus_multimodal`: Contains subdirectories for different universities (`caltech_dir`, `texas_dir`, `uc_dir`), each containing scripts for building datasets and comparing the accuracy of language models.
+- `utils.py` and `utils_webarena.py`: Utility files containing helper functions used by the scripts.
+- `requirements.txt`: Lists the required Python dependencies for running the scripts.
+- `IE_Faculty_dataset.csv`: A dataset file related to faculty information extraction.
+- `config.json`: Configuration file for storing API keys and other settings.
+- `video_example_running_scripts.txt`: A text file with examples of running the scripts.
+
+Overall, this module focuses on webpage data extraction, screenshot capture, and comparing the performance of language models in extracting information from the captured data.
 
 A Break Down of the structure of the repo's file structure:
 ```
@@ -24,7 +43,7 @@ A Break Down of the structure of the repo's file structure:
 │   │   ├── build_texas.py
 │   │   └── llm_extract_and_compare_accuracy.py
 │   └── uc_dir
-│       ├── build_validate_case_and_extract.py
+│       ├── build_uc.py.py
 │       ├── llm_extract_and_compare_accuracy.py
 │       └── table.txt
 ├── requirements.txt
@@ -49,21 +68,7 @@ The Rest of the python dependencies can be installed with:
 pip install -r requirements.txt 
 ```
 
-You will also need a openai api-key inorder to use gpt3.5turbo which can be stored inside a config.json file.
-
-
-Some of the important files/components of the repo:
-
-`src/segmentation/pydepta/pydepta/depta.py`: Runs pydepta to classify regions in HTML and extracts professor info with LLM.
-
-`src/segmentation/pydepta/pydepta/comparing_models.py`: Class where depta.py calls to classify regions and extract professor info with LLM.
-
-`src/segmentation/pydepta/pydepta/LLMBenchmarkSuite.py`: File which runs gpt3.5turbo and Beluga on different standarized prompts for IE in inorder to test the capability of each model.
-
-`src/segmentation/pydepta/pydepta/output_depta`: Shows examples of complete output from Pydepta for UIUC, MIT, and CMU faculty webpages.
-
-`src/segmentation/pydepta/pydepta/video_test_comparing_models`: Shows results from past experiments of extracting professor info with LLMs. Files starting with v2.2 show the results using the newest version of cot prompt. 
-
+You will also need a openai api-key inorder to use gpt4 which can be stored inside a config.json file.
 
 
 ## Functional Design (Usage)
@@ -122,10 +127,6 @@ First the program goes to the url and renders the webpage with selenium. Next, i
 ### 3. Manuel extraction versus llm extraction results
 This program was an attempt to come up with a automated way to grade the LLMs results on different amount of imformation the Multimodal model had to extract on a image. Intead of taking screenshots and scrolling down the viewport, I first manuelly removed all the information I didn't want to be an a given image for the screenshot by deleting it off the html. The 3 webpages I did this for were all for different faculty pages. Next, I found where the faculty information was located in the html, and I would go in order of picking a speceficed amount of Professors I wanted to currently look at on the page, say 3, then delete all of the other ones on HTML and take a screenshot of the whole page. I would then redo this step until I had pictures of all the professors with the given amount in each screenshot. This program allows you to pick how many professors you want to look at in each image so that you can comapre results of extracting of say 6 professors at once or 21 professors at once.
 I want to mention some of the problems that this program has so that if you try to use it for extraction, I recommend not trusting the results of the llm extraction part, as some my results had problems with utf encodings and comparing the exact strings of text from the maunel extraction to the MLM extractions version, which would mark the answer wrong.   
-
-
-![design architecture](https://github.com/FireBirdJZ/forward_data-llm_ie/blob/main/diagram.png)
-
 
 
 ## Issues and Future Work
