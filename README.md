@@ -39,8 +39,8 @@ A Break Down of the structure of the repo's file structure:
 ## Setup
 
 module's dependencies: 
-Python Version 3.11.5
-Pip Version 23.3
+Python Version 3.10.13
+Pip Version 24.0
 
 The Rest of the python dependencies can be installed with:
 ```
@@ -104,17 +104,42 @@ The `FacultyDataHarvester` class located which can be run from depta.py is desig
     - `write_mode`: Optional. Specifies the output format ('json' or 'txt').
   - **Output**: None. The processed data is saved to a file in the specified format.
 
-**Usage Example**
+**Usage Examples**
 
-```python
-harvester = FacultyDataHarvester()
-url = "http://example.com/faculty"
-html_content = harvester.fetch_html_from_url(url)
-harvester.save_html_to_file(url)
-text_content = harvester.extract_text()
-regions = d.extract(html=html_content)
-harvester.find_names_in_region(regions, "output_directory", "faculty_data", "txt")
+1. `build_texas.py` script parameters:
+   - `"https://www.cs.utexas.edu/people"`: The URL of the webpage to process.
+   - `18`: The number of faculty members to include in each batch.
+   - `texas_output18`: The directory where the output will be saved.
+
+2. `llm_extract_and_compare_accuracy.py` script parameters:
+   - `--image_dir texas_output18`: The directory containing the images to process.
+   - `--output_file texas_output18/texas_results`: The file path where the results will be saved.
+
+```bash
+cd manuel_versus_multimodal/texas_dir
+python3 build_texas.py "https://www.cs.utexas.edu/people" 18 texas_output18
+python3 llm_extract_and_compare_accuracy.py --image_dir texas_output18 --output_file texas_output18/texas_results
 ```
+
+
+
+`split_webpage.py` script parameters:
+   - `--urls "https://math.yale.edu/people/all-faculty" "https://www.gps.caltech.edu/people?category=17"`: The URLs of the webpages to process, separated by spaces and enclosed in quotes.
+   - `--output_dir "video_rec_splitwebpage_output"`: The directory where the output will be saved.
+
+```bash
+python split_webpage.py --urls "https://math.yale.edu/people/all-faculty" "https://www.gps.caltech.edu/people?category=17" --output_dir "video_rec_splitwebpage_output"
+```
+
+
+`test_diff_sized_images.py` script parameters:
+   - `--urls "https://math.yale.edu/people/all-faculty" "https://www.gps.caltech.edu/people?category=17"`: The URLs of the webpages to process, separated by spaces and enclosed in quotes.
+   - `--output_dir "video_rec_diffsizedimages_output"`: The directory where the output will be saved.
+
+```bash
+python test_diff_sized_images.py --urls "https://math.yale.edu/people/all-faculty" "https://www.gps.caltech.edu/people?category=17" --output_dir "video_rec_diffsizedimages_output"
+```
+
 
 
  ### LLM Benchmark Suite - Asynchronous Processing
@@ -145,7 +170,7 @@ This section focuses on asynchronous processing of text analysis using large lan
 
 ## Demo video
 
-[![Demo Video](https://img.youtube.com/vi/8swVj_onO30/maxresdefault.jpg)](https://youtu.be/8swVj_onO30)
+[![Demo Video](https://drive.google.com/file/d/19HggW0x5sm8qySDudxUWFJsJ5jaeQfd4/view?usp=drive_link)]
 
 
 
