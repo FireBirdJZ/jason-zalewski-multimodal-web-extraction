@@ -141,33 +141,6 @@ python test_diff_sized_images.py --urls "https://math.yale.edu/people/all-facult
 ```
 
 
-
- ### LLM Benchmark Suite - Asynchronous Processing
-
-**Overview**
-This section focuses on asynchronous processing of text analysis using large language models (LLMs). It provides functionality for reading prompts from a file, comparing responses from different models asynchronously, and writing the outputs to a file inside of LLMBenchmarkSuite.py.
-
-**Key Functions**
-
-* `read_prompts_from_file(file_path: str, delimiter: str = "#@@@@#") -> List[str]`  
-  _Reads prompts for text analysis from a specified file._
-  - **Input**: 
-    - `file_path`: Path to the file containing prompts.
-    - `delimiter`: String delimiter used to separate prompts in the file.
-  - **Output**: List of prompts as strings.
-
-* `collect_all_responses_async(prompts: List[str]) -> str`  
-  _Asynchronously collects responses from LLMs for each prompt._
-  - **Input**: List of prompts to process.
-  - **Output**: Concatenated string of all responses.
-
-* `write_to_file(file_path: str, data: str) -> None`  
-  _Writes the given data to a file at the specified path._
-  - **Input**: 
-    - `file_path`: Path to the output file.
-    - `data`: String data to write to the file.
-  - **Output**: None. The data is written to the file.
-
 ## Demo video
 
 [![Demo Video](https://drive.google.com/file/d/19HggW0x5sm8qySDudxUWFJsJ5jaeQfd4/view?usp=drive_link)]
