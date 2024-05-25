@@ -1,0 +1,7 @@
+cd manuel_versus_multimodal/caltech_dir
+python3 build_texas.py "https://www.cs.utexas.edu/people" 18 texas_output18
+python3 llm_extract_and_compare_accuracy.py --image_dir texas_output18 --output_file texas_output18/texas_results
+
+python split_webpage.py --urls "https://math.yale.edu/people/all-faculty" "https://www.gps.caltech.edu/people?category=17" --output_dir "video_rec_splitwebpage_output"
+
+python test_diff_sized_images.py --urls "https://math.yale.edu/people/all-faculty" "https://www.gps.caltech.edu/people?category=17" --output_dir "video_rec_diffsizedimages_output"

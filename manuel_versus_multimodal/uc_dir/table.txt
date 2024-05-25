@@ -1,0 +1,5 @@
+
+    9.  "average_accuracy": 0.942857142857143
+    15. "average_accuracy": 0.9504761904761905
+    21. "average_accuracy": 0.8337821067821067
+    

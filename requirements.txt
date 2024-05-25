@@ -1,0 +1,6 @@
+openai==1.1.1
+selenium==4.15.2
+pillow==10.1.0
+numpy=1.26.4
+python=3.10.13
+beautifulsoup4=4.12.3
