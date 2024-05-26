@@ -2,6 +2,8 @@
 
 ## Overview
 
+The datasets and all of the information that was extracted for this research can be found here: [Google Drive Folder](https://drive.google.com/drive/u/2/folders/1qWHOCV6Yw72xK9Suv5qOzqxSQS3dPDma)
+
 This module contains several scripts for extracting and analyzing information from webpages:
 
 1. `build_texas.py`, `build_caltech.py`, `build_uc.py`:
@@ -113,9 +115,6 @@ python test_diff_sized_images.py --urls "https://math.yale.edu/people/all-facult
 ## Demo video
 
 [![Demo Video](https://drive.google.com/uc?id=19HggW0x5sm8qySDudxUWFJsJ5jaeQfd4)](https://drive.google.com/file/d/19HggW0x5sm8qySDudxUWFJsJ5jaeQfd4/view?usp=drive_link)
-
-[Google Drive Folder](https://drive.google.com/drive/u/2/folders/1qWHOCV6Yw72xK9Suv5qOzqxSQS3dPDma)
-
 
 
 ## Algorithmic Design 
