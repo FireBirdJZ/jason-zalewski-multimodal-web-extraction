@@ -112,7 +112,9 @@ python test_diff_sized_images.py --urls "https://math.yale.edu/people/all-facult
 
 ## Demo video
 
-[![Demo Video](https://drive.google.com/file/d/19HggW0x5sm8qySDudxUWFJsJ5jaeQfd4/view?usp=drive_link)]
+[![Demo Video](https://drive.google.com/uc?id=19HggW0x5sm8qySDudxUWFJsJ5jaeQfd4)](https://drive.google.com/file/d/19HggW0x5sm8qySDudxUWFJsJ5jaeQfd4/view?usp=drive_link)
+
+[Google Drive Folder](https://drive.google.com/drive/u/2/folders/1qWHOCV6Yw72xK9Suv5qOzqxSQS3dPDma)
 
 
 
